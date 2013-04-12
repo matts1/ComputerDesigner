@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Builder
+_Comment=Builder application
+Categories=GNOME;Utility;
+Exec=builder
+Icon=builder
+Terminal=false
+Type=Application
