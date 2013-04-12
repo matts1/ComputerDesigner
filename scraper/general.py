@@ -6,8 +6,8 @@ SITES = {
 }
 
 SPECIAL_CHARACTERS = set([
-    chr(174), #registered trademark (copyright with r)
-    '\u2122', #tm
+    u'\xae', #registered trademark (copyright with r)
+    u'\u2122', #tm
 ])
 
 def getParsed(brand, url):
@@ -33,7 +33,15 @@ def splitCamelCase(text):
 def removeSymbols(text):
     output = []
     for char in text:
-        print char, repr(char), char in SPECIAL_CHARACTERS, SPECIAL_CHARACTERS
         if char not in SPECIAL_CHARACTERS:
             output.append(char)
     return ''.join(output)
+
+def pprint(tree, indent=0):
+    if isinstance(tree, dict) or isinstance(tree, list) or isinstance(tree, tuple):
+        for item in tree:
+            if isinstance(tree, dict):
+                print " " * indent + item
+            pprint(tree[item], indent + 4)
+    else:
+        print " " * indent + tree
